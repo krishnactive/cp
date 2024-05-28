@@ -1,0 +1,20 @@
+int a[n]; // input array
+int dp[n]; // filled with -INF to represent uncalculated state
+
+//f(i) = max sum till index i
+int f(int index){
+	if(index<0){ // reached outside the array 
+		return 0;
+	}
+	if(dp[index] != -INF){ // state already calculated
+		return dp[index];
+	}
+	
+	// try both cases and store the answer
+	dp[index] = max(a[index]+f(index-2), f(index-1));
+	return dp[index];
+}
+
+void solve(){
+	cout<<f(n-1)<<nline;
+}
